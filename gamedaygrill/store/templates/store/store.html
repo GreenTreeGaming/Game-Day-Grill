@@ -1,0 +1,66 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		<div class="col-lg-4">
+            <img class="thumbnail" src="{% static 'images/nachos.jpg' %}" alt="placeholder">
+			<div class="box-element product">
+                <h6><strong>Appetizers</strong></h6>
+                <hr>
+
+                <div class="Explore-btn">
+                    <button class="btn btn-online-secondary" style="color: black;"><a href="{% url 'appetizers' %}" style="text-decoration: none; color: black;">Explore</a></button>
+                </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+            <img class="thumbnail" src="{% static 'images/burger.jpg' %}" alt="placeholder">
+			<div class="box-element product">
+                <h6><strong>Main Courses</strong></h6>
+                <hr>
+
+                <div class="Explore-btn">
+                    <button class="btn btn-online-secondary" style="color: black;"><a href="{% url 'maincourses' %}" style="text-decoration: none; color: black;">Explore</a></button>
+                </div>
+			</div>
+		</div>
+
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{% static 'images/cloeslaw.jpg' %}" alt="placeholder">
+			<div class="box-element product">
+                <h6><strong>Sides</strong></h6>
+                <hr>
+
+                <div class="Explore-btn">
+                    <button class="btn btn-online-secondary" style="color: black;"><a href="{% url 'sides' %}" style="text-decoration: none; color: black;">Explore</a></button>
+                </div>
+			</div>
+		</div>
+
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{% static 'images/browniebites.jpg' %}" alt="placeholder">
+			<div class="box-element product">
+                <h6><strong>Desserts</strong></h6>
+                <hr>
+
+                <div class="Explore-btn">
+                    <button class="btn btn-online-secondary" style="color: black;"><a href="{% url 'desserts' %}" style="text-decoration: none; color: black;">Explore</a></button>
+                </div>
+			</div>
+		</div>
+
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{% static 'images/quesadilla.jpg' %}" alt="placeholder">
+			<div class="box-element product">
+                <h6><strong>Extras</strong></h6>
+                <hr>
+
+                <div class="Explore-btn">
+                    <button class="btn btn-online-secondary" style="color: black;"><a href="{% url 'extras' %}" style="text-decoration: none; color: black;">Explore</a></button>
+                </div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}
