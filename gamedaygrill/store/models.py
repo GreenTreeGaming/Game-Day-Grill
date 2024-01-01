@@ -25,6 +25,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2)
     type = models.CharField(max_length=2, choices=PRODUCT_TYPES, null=True)
     image = models.ImageField(null=True, blank=True)
+    description = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
         return self.name

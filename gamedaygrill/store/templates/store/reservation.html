@@ -1,8 +1,11 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-  <div class="box">
+  <div class="box reservationbox">
     <div class="centerBox">
+      <div id="user-info">
+        <h2>Fill out the form below to make a reservation.</h2>
+      </div>
       <form id="form">
         {% csrf_token %}
         <div id="shipping-info">
@@ -29,9 +32,6 @@
           </div>
         </div>
       </form>
-      <div id="user-info">
-        <p>Fill out the form below to make a reservation.</p>
-      </div>
       <button id="book-a-reservation">Book A Reservation</button>
     </div>
   </div>

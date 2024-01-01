@@ -23,8 +23,12 @@ h1,h2,h3,h4,h5,h6, p{
 	background-color: #fff;
 	border-radius: 4px;
 	padding: 10px;
-	display: flex; /* Use flexbox */
-	height: auto; /* Set height to auto */
+	display: flex;
+	height: auto;
+}
+
+.reservationbox {
+	padding-left: 30%;
 }
 
 .side-area {
@@ -33,14 +37,14 @@ h1,h2,h3,h4,h5,h6, p{
 }
 
 .map {
-	flex: 1; /* Allow the map to grow and take remaining space */
+	flex: 1;
 }
 
 .divbox {
-	flex: 1; /* Allow the divbox to grow and take remaining space */
+	flex: 1;
 	height: 30em;
 	background-color: #D3D3D3;
-	padding-left: 20px; /* Adjust as needed */
+	padding-left: 20px;
 }  
 
 .thumbnail{
@@ -126,18 +130,25 @@ h1,h2,h3,h4,h5,h6, p{
 	display: none!important;
 }
 
-p {
-    text-align: center;
-}
 
 .form-field {
     width: 250px;
     display: block;
     padding: 5px;
+    text-align: center;
 }
 
 .centerBox {
-	display: flex;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+p {
+    text-align: center;
+}
+
+h2 {
+	text-align: center;
 }
