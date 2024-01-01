@@ -1,52 +1,204 @@
 {% extends 'store/main.html' %}
 {% load static %}
 
-
 {% block content %}
 <style>
-    .welcome-text {
-        color: black;
-    }
-    .food-link {
-        color: red;
-    }
-    .food-button {
-        font-size: 25px;
-        background-color: grey;
-        color: lightblue;
-        border-radius: 10px;
-    }
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+#image-gallery {
+    display: flex;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 20px;
+}
+
+#image-gallery img {
+    height: 200px; 
+    object-fit: cover;
+    transition: transform .2s; /* Animation */
+}
+
+#image-gallery img:hover {
+    transform: scale(1.1); /* Zoom in */
+}
+
+.gallery-item {
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#about-us, #featured-menu {
+    background-color: #f4f4f4;
+    padding: 40px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px; /* Added some space below the title */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Display the menu items in a row */
+    justify-content: space-around; /* Distribute the items evenly */
+    flex-wrap: wrap; /* Allow the items to wrap to the next line */
+}
+
+#featured-menu li {
+    font-size: 1.5em;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    flex-basis: 30%; /* Each item will take up 30% of the row */
+    margin: 10px; /* Added some space around each item */
+}
+
+#testimonials {
+    background-color: #f4f4f4;
+    padding: 40px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.testimonial-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.testimonial {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#testimonials h2 {
+    text-align: center;
+}
+
+.testimonial img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.testimonial h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.testimonial p {
+    text-align: center;
+}
+
+.stars {
+    color: gold;
+}
 </style>
 
-<h2 class="welcome-text">Welcome to the official Game Day Grill website, serving our customers upscale, delicious food since 1983!</h3>
-<p class="welcome-text">  
-    We have many great options for all cuisines, and great drinks to go with your food as well. See our options below:
-</p>
-<!-- <a href="https://en.wikipedia.org/wiki/Butter_chicken" target="_blank">
-    <img src="butter chick q.png" height="300" width="300" title="Our delicious butter chicken!">
-</a>
-<a href="https://en.wikipedia.org/wiki/Indian_cuisine" target="_blank" title="Our Indian food items!">
-    <button class="food-button">Our Options For Indian Food</button>
-</a>
-<a href="https://en.wikipedia.org/wiki/Pasta" target="_blank">
-    <img src="pasta.png" height="300" width="300" title="Our yummy pasta!">
-</a>
-<a href="https://en.wikipedia.org/wiki/Italian_cuisine" target="_blank" title="Our Italian food items!" class="food-link">
-    Our Options For Italian Food
-</a>
-<a href="https://en.wikipedia.org/wiki/Burrito" target="_blank">
-    <img src="burrito.png" height="300" width="300" title="Our scrumptious burrito!">
-</a>
-<a href="https://en.wikipedia.org/wiki/Mexican_cuisine" target="_blank" title="Our Mexican food items!" class="food-link">
-    Our Options For Mexican Food
-</a>
-<a href="https://en.wikipedia.org/wiki/Dumpling" target="_blank">
-    <img src="dumplings.png" height="300" width="300" title="Our fabulous dumplings!">
-</a>
-<a href="https://en.wikipedia.org/wiki/Chinese_cuisine" target="_blank" title="Our Chinese food items!" class="food-link">
-    Our Options For Chinese Food
-</a>
-<a href="https://en.wikipedia.org/wiki/Food" target="_blank" title="All our choices!" class="food-link">
-    All of our menu items
-</a> -->
+<header>
+    <h1>Game Day Grill</h1>
+    <p>Ignite the Spirit of Victory with Our Sizzling Grills!</p>
+</header>
+
+<section id="image-gallery">
+    {% for product in products %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% endfor %}
+</section>
+
+<section id="about-us">
+    <h2>About Game Day Grill</h2>
+    <p>At Game Day Grill, we believe in turning every game day into a memorable culinary experience. Our grills are crafted to perfection, ensuring that each bite is a touchdown in flavor.</p>
+</section>
+
+<section id="featured-menu">
+    <h2>Featured Menu</h2>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+
+<section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial-cards">
+        <div class="testimonial">
+            <img src="{% static 'images/JohnDoe.png' %}" alt="John Doe">
+            <h3>John Doe</h3>
+            <p>"The best game day experience! The food is always amazing."</p>
+            <div class="stars">★★★★★</div>
+        </div>
+        <div class="testimonial">
+            <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith">
+            <h3>Jane Smith</h3>
+            <p>"I love the atmosphere at Game Day Grill. The staff is friendly and the grills are top-notch!"</p>
+            <div class="stars">★★★★★</div>
+        </div>
+    </div>
+</section>
+
+<script>
+    window.onload = function() {
+        setTimeout(function() {
+            var scrollAmount = 0;
+            var scrollForward = true;
+            var slideTimer = setInterval(function(){
+                if (scrollForward) {
+                    document.getElementById('image-gallery').scrollLeft += 5;
+                    scrollAmount += 5;
+                    if(scrollAmount >= document.getElementById('image-gallery').scrollWidth - document.getElementById('image-gallery').offsetWidth){
+                        scrollForward = false;
+                    }
+                } else {
+                    document.getElementById('image-gallery').scrollLeft -= 5;
+                    scrollAmount -= 5;
+                    if(scrollAmount <= 0){
+                        scrollForward = true;
+                    }
+                }
+            }, 25);
+        }, 1000); 
+    };
+</script>
+
 {% endblock content %}
