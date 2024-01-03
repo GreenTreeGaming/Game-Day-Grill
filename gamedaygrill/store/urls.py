@@ -18,4 +18,6 @@ urlpatterns = [
 
     path('contact/', views.contact, name='contact'),
     path('reservation/', views.reservation, name='reservation'),
+
+    path('events/', views.events, name='events'),
 ]
