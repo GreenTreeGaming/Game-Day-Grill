@@ -28,7 +28,7 @@ h1,h2,h3,h4,h5,h6, p{
 }
 
 .reservationbox {
-	padding-left: 30%;
+	justify-content: center;
 }
 
 .side-area {

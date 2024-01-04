@@ -9,17 +9,20 @@ body {
 }
 
 header {
-    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
     text-align: center;
-    padding: 20px;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 5.5rem;
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 #image-gallery {
@@ -131,12 +134,30 @@ ul {
 .stars {
     color: gold;
 }
+
+.img-container {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+}
+
+#top-img {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+}
+
 </style>
 
-<header>
-    <h1>Game Day Grill</h1>
-    <p>Ignite the Spirit of Victory with Our Sizzling Grills!</p>
-</header>
+<!-- <img id="top-img" src="{% static 'images/barbequeribs.jpg' %}" alt=""> -->
+
+<div class="img-container">
+    <img id="top-img" src="https://images.squarespace-cdn.com/content/v1/5df80109be13de212e4018ec/1582145140227-JKDX4KCIXJZ84NHQ8GGD/sc2020-102.jpg" alt="">
+    <header>
+        <h1 style="color: white;">Game Day Grill</h1>
+        <p style="color: white;">Ignite the Spirit of Victory with Our Sizzling Grills!</p>
+    </header>
+</div>
 
 <section id="image-gallery">
     {% for product in products %}
@@ -146,7 +167,8 @@ ul {
 
 <section id="about-us">
     <h2>About Game Day Grill</h2>
-    <p>At Game Day Grill, we believe in turning every game day into a memorable culinary experience. Our grills are crafted to perfection, ensuring that each bite is a touchdown in flavor.</p>
+    <p>At Game Day Grill, you'll find a <strong>refreshing</strong> balance of <strong>excellent</strong> customer service and <strong>delicious</strong> food. The staff is <strong>friendly</strong> and <strong>attentive</strong>, making you feel right at home. They take the time to ensure you have a <strong>comfortable</strong> dining experience. The menu is straightforward but <strong>impressive</strong>, offering a variety of <strong>well-prepared</strong> dishes that cater to different tastes. 
+        The chefs prioritize <strong>quality</strong> ingredients, resulting in <strong>flavorful</strong> and <strong>satisfying</strong> meals. It's the kind of place where you can relax, enjoy a good meal, and appreciate the simple pleasures of a welcoming atmosphere and tasty food.</p>
     <p>This website was made by Sarvajith Karun, Sanjay Eshwar, Siddharth Chakaravarthula, and Aryan Maheshwari from Wayzata High School in Wayzata, Minnesota. (2024) (435 - Website Design Team)</p>
 </section>
 
@@ -166,13 +188,19 @@ ul {
         <div class="testimonial">
             <img src="{% static 'images/JohnDoe.png' %}" alt="John Doe">
             <h3>John Doe</h3>
-            <p>"The best game day experience! The food is always amazing."</p>
+            <p>"Game Day Grill has hit the taste buds out of the park! The diverse menu, vibrant atmosphere, and friendly staff create a winning combination. Whether it's casual dining or a celebration, Game Day Grill is my top pick for a memorable meal every time."</p>
             <div class="stars">★★★★★</div>
         </div>
         <div class="testimonial">
             <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith">
             <h3>Jane Smith</h3>
-            <p>"I love the atmosphere at Game Day Grill. The staff is friendly and the grills are top-notch!"</p>
+            <p>"Game Day Grill is a culinary touchdown! The fusion of bold flavors and the electric ambiance make it the ultimate dining destination. Whether you're a sports enthusiast or just looking for a fantastic meal, Game Day Grill always delivers a winning experience."</p>
+            <div class="stars">★★★★★</div>
+        </div>
+        <div class="testimonial">
+            <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith">
+            <h3>Alex Rodriguez</h3>
+            <p>"Game Day Grill is a culinary home run! From the sizzling appetizers to the mouthwatering main courses, every visit is a grand slam of flavors. The lively ambiance and exceptional service make it the MVP of dining experiences."</p>
             <div class="stars">★★★★★</div>
         </div>
     </div>
