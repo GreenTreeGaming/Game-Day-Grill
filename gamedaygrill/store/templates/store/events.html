@@ -9,12 +9,6 @@
         padding: 0;
     }
 
-    header {
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-    }
-
     .event-container {
         display: flex;
         flex-wrap: wrap;
@@ -39,12 +33,44 @@
     p {
         color: #555;
     }
+
+    header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 5.5rem;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+}
+
+#top-img {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+}
 </style>
 
-
-<header>
-    <h1>Game Day Grill Events</h1>
-</header>
+<div class="img-container">
+    <img id="top-img" src="https://images.squarespace-cdn.com/content/v1/5df80109be13de212e4018ec/1582145140227-JKDX4KCIXJZ84NHQ8GGD/sc2020-102.jpg" alt="">
+    <header>
+        <h1 style="color: white;">Events</h1>
+        <p style="color: white;">Join us during an event for special made foods and fun!</p>
+    </header>
+  </div>
 
 <div class="event-container">
     <div class="event-card">

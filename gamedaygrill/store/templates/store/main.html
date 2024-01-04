@@ -12,60 +12,71 @@
 </head>
 <body>
     <style>
-    footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    padding-bottom: 100px;
-    margin-top: 50px; /* Add a margin to the top of the footer */
-    text-align: center;
-}
-
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .footer-content h3 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .footer-content ul {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .footer-content ul li {
-        margin: 0 10px;
-    }
-
-    .footer-content ul li a {
+        footer {
+        background-color: #333;
         color: #fff;
-        text-decoration: none;
-    }
+        padding: 20px;
+        padding-bottom: 100px;
+        margin-top: 50px;
+        text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-content h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .footer-content ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-content ul li {
+            margin: 0 10px;
+        }
+
+        .footer-content ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-content ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .footer-content ul li a:hover {
+            color: red;
+        }
     </style>
 
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Game Day Grill</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{% url 'home' %}" style="color: black;">Game Day Grill</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color:  black;">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'store' %}">Menu</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'store' %}" style="color: black;">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'contact' %}" style="color: black;">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
                             Others
                         </a>
                         <ul class="dropdown-menu">
@@ -76,7 +87,6 @@
                 </ul>
 
                 <div class="form-inline my-2 my-lg-0 d-flex align-items-center">
-                    <a class="nav-link active" aria-current="page" href="#">Login</a>
                     <a href="{% url 'cart' %}">
                         <img id="cart-icon" src="{% static 'images/cart.png' %}">
                     </a>
@@ -85,6 +95,13 @@
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <br>
+        {% block center %}
+
+        {% endblock center %}
+    </div>
 
     <div class="container-fluid">
         <br>
@@ -95,7 +112,7 @@
 
     <footer>
         <div class="footer-content">
-            <h3>Game Day Grill</h3>
+            <h3 style="color: lightgrey;">Game Day Grill</h3>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'home' %}">About Us</a></li>
@@ -103,7 +120,7 @@
                 <li><a href="{% url 'home' %}">Testimonials</a></li>
                 <li><a href="{% url 'contact' %}">Contact Us</a></li>
             </ul>
-            <p>Contact us: info@gamedaygrill.com | Follow us on social media: @GameDayGrill</p>
+            <p style="color: lightgrey;">Contact us: info@gamedaygrill.com | Follow us on social media: @GameDayGrill</p>
         </div>
     </footer>
 

@@ -147,6 +147,33 @@ ul {
     object-fit: cover;
 }
 
+.order-button {
+    background-color: red;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+    background-color: darkred;
+}
+
+.order-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.order-button.grey {
+    background-color: #555555;
+}
+
 </style>
 
 <!-- <img id="top-img" src="{% static 'images/barbequeribs.jpg' %}" alt=""> -->
@@ -156,6 +183,12 @@ ul {
     <header>
         <h1 style="color: white;">Game Day Grill</h1>
         <p style="color: white;">Ignite the Spirit of Victory with Our Sizzling Grills!</p>
+        <button class="order-button">
+            <a href="{% url 'store' %}">Order Now</a>
+        </button>
+        <button class="order-button grey">
+            <a href="{% url 'reservation' %}">Book a Reservation</a>
+        </button>
     </header>
 </div>
 

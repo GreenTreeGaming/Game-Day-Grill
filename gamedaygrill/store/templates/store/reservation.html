@@ -1,6 +1,45 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+  <style>
+    header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 5.5rem;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+}
+
+#top-img {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+}
+  </style>
+
+  <div class="img-container">
+    <img id="top-img" src="https://images.squarespace-cdn.com/content/v1/5df80109be13de212e4018ec/1582145140227-JKDX4KCIXJZ84NHQ8GGD/sc2020-102.jpg" alt="">
+    <header>
+        <h1 style="color: white;">Reservation</h1>
+        <p style="color: white;">Book a reseration with us today!</p>
+    </header>
+  </div>
+
   <div class="box reservationbox">
     <div class="centerBox">
       <div id="user-info">
@@ -10,22 +49,22 @@
         {% csrf_token %}
         <div id="shipping-info">
           <div class="form-field">
-            <input required class="form-control" type="text" name="firstName" placeholder="First Name">
+            <input required class="form-control" type="text" name="firstName" placeholder="First Name" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="text" name="lastName" placeholder="Last Name">
+            <input required class="form-control" type="text" name="lastName" placeholder="Last Name" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="email" name="email" placeholder="Email">
+            <input required class="form-control" type="email" name="email" placeholder="Email" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="tel" name="tel" placeholder="Phone Number">
+            <input required class="form-control" type="tel" name="tel" placeholder="Phone Number" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="number" name="partySize" placeholder="Party Size">
+            <input required class="form-control" type="number" name="partySize" placeholder="Party Size" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="time" name="time" min="11:00" max="22:00" placeholder="Time">
+            <input required class="form-control" type="time" name="time" min="11:00" max="22:00" placeholder="Time" required>
           </div>
           <div class="form-field">
             <input required class="form-control" type="text" name="specialRequest" placeholder="Special Requests">
