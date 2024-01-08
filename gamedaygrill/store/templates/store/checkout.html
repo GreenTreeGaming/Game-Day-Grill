@@ -123,10 +123,6 @@
 		csrftoken = form.querySelector('[name=csrfmiddlewaretoken]').value;
 		console.log('Newtoken: ', form.getElementsByTagName("input")[0].value)
 
-		if (user != 'AnonymousUser'){
-		document.getElementById('user-info').innerHTML = ""
-		}
-
 		form.addEventListener('submit', function(ev){
 			ev.preventDefault()
 			document.getElementById('form-button').classList.add('hidden');
