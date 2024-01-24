@@ -36,11 +36,11 @@ p {
 #image-gallery img {
     height: 200px; 
     object-fit: cover;
-    transition: transform .2s; /* Animation */
+    transition: transform .2s;
 }
 
 #image-gallery img:hover {
-    transform: scale(1.1); /* Zoom in */
+    transform: scale(1.1);
 }
 
 .gallery-item {
@@ -61,15 +61,15 @@ h2 {
     color: #333;
     font-size: 2em;
     text-align: center;
-    margin-bottom: 20px; /* Added some space below the title */
+    margin-bottom: 20px;
 }
 
 ul {
     list-style: none;
     padding: 0;
-    display: flex; /* Display the menu items in a row */
-    justify-content: space-around; /* Distribute the items evenly */
-    flex-wrap: wrap; /* Allow the items to wrap to the next line */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 #featured-menu li {
@@ -79,8 +79,8 @@ ul {
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    flex-basis: 30%; /* Each item will take up 30% of the row */
-    margin: 10px; /* Added some space around each item */
+    flex-basis: 30%;
+    margin: 10px;
 }
 
 #testimonials {
@@ -174,6 +174,26 @@ ul {
 
 .order-button.grey {
     background-color: #555555;
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 16px;
+    }
 }
 
 </style>
