@@ -1,78 +1,77 @@
-{% extends 'store/main.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'store/main.html' %} {% load static %} {% block content %}
 <style>
-body {
+  body {
     margin: 0;
     padding: 0;
-}
+  }
 
-header {
+  header {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-}
+  }
 
-h1 {
+  h1 {
     font-size: 5.5rem;
-}
+  }
 
-p {
+  p {
     font-size: 1.5em;
-}
+  }
 
-#image-gallery {
+  #image-gallery {
     display: flex;
     overflow-x: auto;
     justify-content: flex-start;
     gap: 10px;
     padding: 20px;
-}
+  }
 
-#image-gallery img {
-    height: 200px; 
+  #image-gallery img {
+    height: 200px;
     object-fit: cover;
-    transition: transform .2s;
-}
+    transition: transform 0.2s;
+  }
 
-#image-gallery img:hover {
+  #image-gallery img:hover {
     transform: scale(1.1);
-}
+  }
 
-.gallery-item {
+  .gallery-item {
     margin: 10px;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  }
 
-#about-us, #featured-menu {
-    background-color: #f4f4f4;
+  #about-us,
+  #featured-menu {
+    background-color: #d3d3d3;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 40px;
     margin: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  }
 
-h2 {
+  h2 {
     color: #333;
     font-size: 2em;
     text-align: center;
     margin-bottom: 20px;
-}
+  }
 
-ul {
+  ul {
     list-style: none;
     padding: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
-}
+  }
 
-#featured-menu li {
+  #featured-menu li {
     font-size: 1.5em;
     text-align: center;
     color: #333;
@@ -81,26 +80,25 @@ ul {
     border: 1px solid #ccc;
     flex-basis: 30%;
     margin: 10px;
-}
+  }
 
-#testimonials {
+  #testimonials {
     background-color: #f4f4f4;
     padding: 40px;
     margin: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
+  }
 
-.testimonial-cards {
+  .testimonial-cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-}
+  }
 
-
-.testimonial {
-    background-color: #fff;
-    border-radius: 10px;
+  .testimonial {
+    background-color: #d3d3d3;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 30%;
@@ -108,48 +106,48 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+  }
 
-#testimonials h2 {
+  #testimonials h2 {
     text-align: center;
-}
+  }
 
-.testimonial img {
+  .testimonial img {
     border-radius: 50%;
     width: 100px;
     height: 100px;
     object-fit: cover;
     margin-bottom: 10px;
-}
+  }
 
-.testimonial h3 {
+  .testimonial h3 {
     margin: 0;
     margin-bottom: 10px;
-}
+  }
 
-.testimonial p {
+  .testimonial p {
     text-align: center;
-}
+  }
 
-.stars {
+  .stars {
     color: gold;
-}
+  }
 
-.img-container {
+  .img-container {
     position: relative;
     width: 100%;
     height: 55vh;
-}
+  }
 
-#top-img {
+  #top-img {
     width: 100%;
     height: 55vh;
     object-fit: cover;
     filter: brightness(50%);
     border-radius: 1%;
-}
+  }
 
-.order-button {
+  .order-button {
     background-color: red;
     border: none;
     border-radius: 25px;
@@ -161,128 +159,284 @@ ul {
     margin: 4px 2px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+  }
 
-.order-button:hover {
+  .order-button:hover {
     background-color: darkred;
-}
+  }
 
-.order-button a {
+  .order-button a {
     color: white;
     text-decoration: none;
-}
+  }
 
-.order-button.grey {
+  .order-button.grey {
     background-color: #555555;
-}
+  }
 
-@media only screen and (max-width: 600px) {
+  .btn {
+    border-radius: 12px;
+  }
+
+  .category {
+    width: 350px;
+    height: 100px;
+    position: relative;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1%;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    border-radius: 3%;
+  }
+
+  .category h2 {
+    position: relative;
+    z-index: 1;
+    color: white;
+  }
+
+  a {
+    text-decoration: none;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @media only screen and (max-width: 600px) {
     h1 {
-        font-size: 24px;
+      font-size: 24px;
     }
 
     p {
-        font-size: 14px;
+      font-size: 14px;
     }
-}
+  }
 
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
     h1 {
-        font-size: 30px;
+      font-size: 30px;
     }
 
     p {
-        font-size: 16px;
+      font-size: 16px;
     }
-}
+  }
 
+  @media (max-width: 600px) {
+    .testimonial img {
+      max-width: 150px;
+    }
+
+    .testimonial h2,
+    .testimonial p {
+      font-size: 0.8em;
+    }
+  }
 </style>
 
 <!-- <img id="top-img" src="{% static 'images/barbequeribs.jpg' %}" alt=""> -->
 
 <div class="img-container">
-    <img id="top-img" src="https://images.squarespace-cdn.com/content/v1/5df80109be13de212e4018ec/1582145140227-JKDX4KCIXJZ84NHQ8GGD/sc2020-102.jpg" alt="">
-    <header>
-        <h1 style="color: white;">Game Day Grill</h1>
-        <p style="color: white;">Ignite the Spirit of Victory with Our Sizzling Grills!</p>
-        <button class="order-button">
-            <a href="{% url 'store' %}">Order Now</a>
-        </button>
-        <button class="order-button grey">
-            <a href="{% url 'reservation' %}">Book a Reservation</a>
-        </button>
-    </header>
+  <img
+    id="top-img"
+    src="https://images.squarespace-cdn.com/content/v1/5df80109be13de212e4018ec/1582145140227-JKDX4KCIXJZ84NHQ8GGD/sc2020-102.jpg"
+    alt=""
+  />
+  <header>
+    <h1 style="color: white">Game Day Grill</h1>
+    <p style="color: white">
+      Ignite the Spirit of Victory with Our Sizzling Grills!
+    </p>
+    <button class="btn btn-danger order-button">
+      <a href="{% url 'store' %}">Order Now</a>
+    </button>
+    <button class="btn btn-secondary order-button grey">
+      <a href="{% url 'reservation' %}">Book a Reservation</a>
+    </button>
+  </header>
 </div>
 
 <section id="image-gallery">
-    {% for product in products %}
-        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-    {% endfor %}
+  {% for product in products %}
+  <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+  {% endfor %}
 </section>
 
 <section id="about-us">
-    <h2>About Game Day Grill</h2>
-    <p>At Game Day Grill, you'll find a <strong>refreshing</strong> balance of <strong>excellent</strong> customer service and <strong>delicious</strong> food. The staff is <strong>friendly</strong> and <strong>attentive</strong>, making you feel right at home. They take the time to ensure you have a <strong>comfortable</strong> dining experience. The menu is straightforward but <strong>impressive</strong>, offering a variety of <strong>well-prepared</strong> dishes that cater to different tastes. 
-        The chefs prioritize <strong>quality</strong> ingredients, resulting in <strong>flavorful</strong> and <strong>satisfying</strong> meals. It's the kind of place where you can relax, enjoy a good meal, and appreciate the simple pleasures of a welcoming atmosphere and tasty food.</p>
-    <p>This website was made by Sarvajith Karun, Sanjay Eshwar, Siddharth Chakaravarthula, and Aryan Maheshwari from Wayzata High School in Wayzata, Minnesota. (2024) (435 - Website Design Team)</p>
+  <h2>About Game Day Grill</h2>
+  <p>
+    At Game Day Grill, you'll find a <strong>refreshing</strong> balance of
+    <strong>excellent</strong> customer service and
+    <strong>delicious</strong> food. The staff is <strong>friendly</strong> and
+    <strong>attentive</strong>, making you feel right at home. They take the
+    time to ensure you have a <strong>comfortable</strong> dining experience.
+    The menu is straightforward but <strong>impressive</strong>, offering a
+    variety of <strong>well-prepared</strong> dishes that cater to different
+    tastes. The chefs prioritize <strong>quality</strong> ingredients, resulting
+    in <strong>flavorful</strong> and <strong>satisfying</strong> meals. It's
+    the kind of place where you can relax, enjoy a good meal, and appreciate the
+    simple pleasures of a welcoming atmosphere and tasty food.
+  </p>
 </section>
 
 <section id="featured-menu">
-    <h2>Featured Menu</h2>
-    <ul>
-        {% for product in products %}
-            <li>{{ product.name }}</li>
-        {% endfor %}
-    </ul>
+  <h2>Featured Menu</h2>
+  <ul>
+    <a href="{% url 'appetizers' %}">
+      <div class="category">
+        <img
+          class="background-image"
+          src="{% static 'images/nachos.jpg' %}"
+          alt="image"
+        />
+        <h2>Appetizers</h2>
+      </div>
+    </a>
+    <a href="{% url 'maincourses' %}">
+      <div class="category">
+        <img
+          class="background-image"
+          src="{% static 'images/burger.jpg' %}"
+          alt="image"
+        />
+        <h2>Main Courses</h2>
+      </div>
+    </a>
+    <a href="{% url 'desserts' %}">
+      <div class="category">
+        <img
+          class="background-image"
+          src="{% static 'images/browniebites.jpg' %}"
+          alt="image"
+        />
+        <h2>Desserts</h2>
+      </div>
+    </a>
+    <a href="{% url 'store' %}">
+      <div class="category">
+        <img
+          class="background-image"
+          src="{% static 'images/quesadilla.jpg' %}"
+          alt="image"
+        />
+        <h2>More</h2>
+      </div>
+    </a>
+  </ul>
 </section>
 
-
 <section id="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testimonial-cards">
-        <div class="testimonial">
-            <img src="{% static 'images/JohnDoe.png' %}" alt="John Doe">
-            <h3>John Doe</h3>
-            <p>"Game Day Grill has hit the taste buds out of the park! The diverse menu, vibrant atmosphere, and friendly staff create a winning combination. Whether it's casual dining or a celebration, Game Day Grill is my top pick for a memorable meal every time."</p>
-            <div class="stars">★★★★★</div>
-        </div>
-        <div class="testimonial">
-            <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith">
-            <h3>Jane Smith</h3>
-            <p>"Game Day Grill is a culinary touchdown! The fusion of bold flavors and the electric ambiance make it the ultimate dining destination. Whether you're a sports enthusiast or just looking for a fantastic meal, Game Day Grill always delivers a winning experience."</p>
-            <div class="stars">★★★★★</div>
-        </div>
-        <div class="testimonial">
-            <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith">
-            <h3>Alex Rodriguez</h3>
-            <p>"Game Day Grill is a culinary home run! From the sizzling appetizers to the mouthwatering main courses, every visit is a grand slam of flavors. The lively ambiance and exceptional service make it the MVP of dining experiences."</p>
-            <div class="stars">★★★★★</div>
-        </div>
+  <h2>Testimonials</h2>
+  <div class="testimonial-cards">
+    <div class="testimonial">
+      <img src="{% static 'images/JohnDoe.png' %}" alt="John Doe" />
+      <h3>Sarah Rodriguez</h3>
+      <p>
+        "Game Day Grill is a culinary touchdown! The bold flavors, extensive
+        menu, and lively atmosphere make it the ultimate destination for any
+        food enthusiast. From game nights with friends to family celebrations,
+        Game Day Grill always delivers a winning dining experience."
+      </p>
+      <div class="stars">★★★★★</div>
     </div>
+    <div class="testimonial">
+      <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith" />
+      <h3>Robert Anderson</h3>
+      <p>
+        "As a self-proclaimed foodie, Game Day Grill is my MVP for delicious
+        eats. The creative menu, attentive service, and sports-centric ambiance
+        create an unbeatable combination. Whenever I'm craving a memorable
+        dining experience, Game Day Grill is my first choice."
+      </p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith" />
+      <h3>Emily Clark</h3>
+      <p>
+        "Game Day Grill is a slam dunk for both sports lovers and food
+        aficionados! The diverse menu caters to every palate, and the energetic
+        vibe adds an extra layer of excitement to the dining experience. It's my
+        go-to spot for a winning meal and a great time."
+      </p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith" />
+      <h3>Michael Turner</h3>
+      <p>
+        "Game Day Grill hits a home run with its fantastic fusion of flavors!
+        The culinary craftsmanship, combined with the inviting atmosphere, makes
+        it the perfect spot for any occasion. Whether it's a casual lunch or a
+        celebratory dinner, Game Day Grill never disappoints."
+      </p>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith" />
+      <h3>Jessica Nguyen</h3>
+      <p>
+        "Game Day Grill is a flavor fiesta! The menu is a culinary journey, and
+        the friendly staff adds a personal touch to every visit. It has become
+        my favorite spot to savor delicious dishes while enjoying the vibrant
+        ambiance. Game Day Grill truly knows how to score big in the dining
+        scene."
+      </p>
+
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <img src="{% static 'images/JohnDoe.png' %}" alt="Jane Smith" />
+      <h3>Daniel Carter</h3>
+      <p>
+        "Game Day Grill is a culinary experience that stands out from the crowd.
+        The mouthwatering dishes, cozy atmosphere, and top-notch service make it
+        a winning choice for any dining outing. It's the kind of place where
+        every bite feels like a victory!"
+      </p>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
 </section>
 
 <script>
-    window.onload = function() {
-        setTimeout(function() {
-            var scrollAmount = 0;
-            var scrollForward = true;
-            var slideTimer = setInterval(function(){
-                if (scrollForward) {
-                    document.getElementById('image-gallery').scrollLeft += 5;
-                    scrollAmount += 5;
-                    if(scrollAmount >= document.getElementById('image-gallery').scrollWidth - document.getElementById('image-gallery').offsetWidth){
-                        scrollForward = false;
-                    }
-                } else {
-                    document.getElementById('image-gallery').scrollLeft -= 5;
-                    scrollAmount -= 5;
-                    if(scrollAmount <= 0){
-                        scrollForward = true;
-                    }
-                }
-            }, 25);
-        }, 1000); 
-    };
+  window.onload = function () {
+    setTimeout(function () {
+      var scrollAmount = 0;
+      var scrollForward = true;
+      var slideTimer = setInterval(function () {
+        if (scrollForward) {
+          document.getElementById("image-gallery").scrollLeft += 5;
+          scrollAmount += 5;
+          if (
+            scrollAmount >=
+            document.getElementById("image-gallery").scrollWidth -
+              document.getElementById("image-gallery").offsetWidth
+          ) {
+            scrollForward = false;
+          }
+        } else {
+          document.getElementById("image-gallery").scrollLeft -= 5;
+          scrollAmount -= 5;
+          if (scrollAmount <= 0) {
+            scrollForward = true;
+          }
+        }
+      }, 25);
+    }, 1000);
+  };
 </script>
 
 {% endblock content %}

@@ -1,103 +1,151 @@
-{% extends 'store/main.html' %}
-{% load static %}
-{% block center %}
-    <style>
-        .store-btn-anin {
-        color: black !important;
-        transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-        border-radius: 5px;
-        padding: 10px;
+{% extends 'store/main.html' %} {% load static %} {% block center %}
+<style>
+  .store-btn-anin {
+    color: black !important;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .store-btn-anin:hover {
+    background-color: red !important;
+    color: white !important;
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
     }
-
-    .store-btn-anin:hover {
-        background-color: red !important;
-        color: white !important;
-        animation: pulse 1s infinite;
+    50% {
+      transform: scale(1.1);
     }
-
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.1);
-        }
-        100% {
-            transform: scale(1);
-        }
+    100% {
+      transform: scale(1);
     }
+  }
 
-    .thumbnail {
-		width: 100%;
-		height: 200px;
-		object-fit: cover;
-	}
+  .thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
 
-    .col-lg-3 {
-        margin-bottom: 20px;
-    }
-    </style>
+  .col-lg-3 {
+    margin-bottom: 20px;
+  }
+</style>
 
-	<div class="row">
-		<div class="col-lg-3">
-            <img class="thumbnail" src="{% static 'images/nachos.jpg' %}" alt="placeholder">
-			<div class="box-element product">
-                <h6><strong>Appetizers</strong></h6>
-                <hr>
+<div class="row">
+  <div class="col-lg-3">
+    <img
+      class="thumbnail"
+      src="{% static 'images/nachos.jpg' %}"
+      alt="placeholder"
+    />
+    <div class="box-element product">
+      <h6><strong>Appetizers</strong></h6>
+      <hr />
 
-                <div class="Explore-btn">
-                    <button class="btn btn-online-secondary store-btn-anin"><a href="{% url 'appetizers' %}" style="text-decoration: none; color: black;">Explore</a></button>
-                </div>
-			</div>
-		</div>
+      <div class="Explore-btn">
+        <button class="btn btn-online-secondary store-btn-anin">
+          <a
+            href="{% url 'appetizers' %}"
+            style="text-decoration: none; color: black"
+            >Explore</a
+          >
+        </button>
+      </div>
+    </div>
+  </div>
 
-		<div class="col-lg-3">
-            <img class="thumbnail" src="{% static 'images/burger.jpg' %}" alt="placeholder">
-			<div class="box-element product">
-                <h6><strong>Main Courses</strong></h6>
-                <hr>
+  <div class="col-lg-3">
+    <img
+      class="thumbnail"
+      src="{% static 'images/burger.jpg' %}"
+      alt="placeholder"
+    />
+    <div class="box-element product">
+      <h6><strong>Main Courses</strong></h6>
+      <hr />
 
-                <div class="Explore-btn">
-                    <button class="btn btn-online-secondary store-btn-anin"><a href="{% url 'maincourses' %}" style="text-decoration: none; color: black;">Explore</a></button>
-                </div>
-			</div>
-		</div>
+      <div class="Explore-btn">
+        <button class="btn btn-online-secondary store-btn-anin">
+          <a
+            href="{% url 'maincourses' %}"
+            style="text-decoration: none; color: black"
+            >Explore</a
+          >
+        </button>
+      </div>
+    </div>
+  </div>
 
-        <div class="col-lg-3">
-            <img class="thumbnail" src="{% static 'images/cloeslaw.jpg' %}" alt="placeholder">
-			<div class="box-element product">
-                <h6><strong>Sides</strong></h6>
-                <hr>
+  <div class="col-lg-3">
+    <img
+      class="thumbnail"
+      src="{% static 'images/cloeslaw.jpg' %}"
+      alt="placeholder"
+    />
+    <div class="box-element product">
+      <h6><strong>Sides</strong></h6>
+      <hr />
 
-                <div class="Explore-btn">
-                    <button class="btn btn-online-secondary store-btn-anin"><a href="{% url 'sides' %}" style="text-decoration: none; color: black;">Explore</a></button>
-                </div>
-			</div>
-		</div>
+      <div class="Explore-btn">
+        <button class="btn btn-online-secondary store-btn-anin">
+          <a
+            href="{% url 'sides' %}"
+            style="text-decoration: none; color: black"
+            >Explore</a
+          >
+        </button>
+      </div>
+    </div>
+  </div>
 
-        <div class="col-lg-3">
-            <img class="thumbnail" src="{% static 'images/browniebites.jpg' %}" alt="placeholder">
-			<div class="box-element product">
-                <h6><strong>Desserts</strong></h6>
-                <hr>
+  <div class="col-lg-3">
+    <img
+      class="thumbnail"
+      src="{% static 'images/browniebites.jpg' %}"
+      alt="placeholder"
+    />
+    <div class="box-element product">
+      <h6><strong>Desserts</strong></h6>
+      <hr />
 
-                <div class="Explore-btn">
-                    <button class="btn btn-online-secondary store-btn-anin"><a href="{% url 'desserts' %}" style="text-decoration: none; color: black;">Explore</a></button>
-                </div>
-			</div>
-		</div>
+      <div class="Explore-btn">
+        <button class="btn btn-online-secondary store-btn-anin">
+          <a
+            href="{% url 'desserts' %}"
+            style="text-decoration: none; color: black"
+            >Explore</a
+          >
+        </button>
+      </div>
+    </div>
+  </div>
 
-        <div class="col-lg-3">
-            <img class="thumbnail" src="{% static 'images/quesadilla.jpg' %}" alt="placeholder">
-			<div class="box-element product">
-                <h6><strong>Extras</strong></h6>
-                <hr>
+  <div class="col-lg-3">
+    <img
+      class="thumbnail"
+      src="{% static 'images/quesadilla.jpg' %}"
+      alt="placeholder"
+    />
+    <div class="box-element product">
+      <h6><strong>Extras</strong></h6>
+      <hr />
 
-                <div class="Explore-btn">
-                    <button class="btn btn-online-secondary store-btn-anin"><a href="{% url 'extras' %}" style="text-decoration: none; color: black;">Explore</a></button>
-                </div>
-			</div>
-		</div>
-	</div>
+      <div class="Explore-btn">
+        <button class="btn btn-online-secondary store-btn-anin">
+          <a
+            href="{% url 'extras' %}"
+            style="text-decoration: none; color: black"
+            >Explore</a
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock center %}

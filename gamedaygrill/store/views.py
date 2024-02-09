@@ -21,7 +21,7 @@ def home(request):
 
     return render(request, 'store/home.html', context)
 
-def cart(request):
+def cart(request):  
     data = cartData(request)
 
     cartItems = data['cartItems']
@@ -52,6 +52,18 @@ def events(request):
     context = {'products': products, 'cartItems': cartItems}
 
     return render(request, 'store/events.html', context)
+
+def about(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    products = Product.objects.all()
+    context = {'products': products, 'cartItems': cartItems}
+
+    return render(request, 'store/about.html', context)
 
 
 
@@ -129,6 +141,7 @@ def contact(request):
 
     context = {'cartItems': cartItems}
     return render(request, 'store/contact.html', context)
+    
 
 def updateItem(request):
     data = json.loads(request.body)
@@ -168,7 +181,7 @@ def processOrder(request):
     total = float(data['form']['total'])
     order.transaction_id = transaction_id
 
-    if total == order.get_cart_total:  # Corrected this line
+    if total == order.get_cart_total:
         order.complete = True
     order.save()
 
@@ -187,10 +200,8 @@ def processOrder(request):
 def processReservation(request):
     data = json.loads(request.body)
 
-    # Extract form data
     form_data = data['form']
 
-    # Create new Reservation object
     Reservation.objects.create(
         first_name=form_data['firstName'],
         last_name=form_data['lastName'],

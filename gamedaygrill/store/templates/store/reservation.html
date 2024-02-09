@@ -52,6 +52,10 @@ p {
         font-size: 16px;
     }
 }
+
+  #form {
+    color: white;
+  }
   </style>
 
   <div class="img-container">
@@ -67,40 +71,74 @@ p {
       <div id="user-info">
         <h2>Fill out the form below to make a reservation.</h2>
       </div>
-      <form id="form">
+      <!-- <form id="form" method="post">
         {% csrf_token %}
-        <div id="shipping-info">
+        <div id="shipping-info" class="mb-3">
           <div class="form-field">
-            <input required class="form-control" type="text" name="firstName" placeholder="First Name" required>
+            <input required type="text" name="firstName" placeholder="First Name" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="text" name="lastName" placeholder="Last Name" required>
+            <input required type="text" name="lastName" placeholder="Last Name" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="email" name="email" placeholder="Email" required>
+            <input required type="email" name="email" placeholder="Email" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="tel" name="tel" placeholder="Phone Number" required>
+            <input required type="tel" name="tel" placeholder="Phone Number" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="number" name="partySize" placeholder="Party Size" required>
+            <input required type="number" name="partySize" placeholder="Party Size" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="time" name="time" min="11:00" max="22:00" placeholder="Time" required>
+            <input required type="time" name="time" min="11:00" max="22:00" placeholder="Time" required>
           </div>
           <div class="form-field">
-            <input required class="form-control" type="text" name="specialRequest" placeholder="Special Requests">
+            <input required type="text" name="specialRequest" placeholder="Special Requests">
           </div>
         </div>
+      </form> -->
+
+      <form id="form" class="needs-validation">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+          <input name="firstName" type="text" class="form-control" id="floatingInput" placeholder="#" required>
+          <label for="floatingInput">First Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="lastName" type="text" class="form-control" placeholder="#" required>
+          <label for="floatingInput">Last Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="#" required>
+          <div id="emailHelp" class="form-text" style="color: lightgray;">We'll never share your email with anyone else.</div>
+          <label for="floatingInput">Email Address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="tel" type="tel" class="form-control" placeholder="#" required>
+          <label for="floatingInput">Phone Number</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="partySize" type="number" class="form-control" placeholder="#" required>
+          <label for="floatingInput">Party Size</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="time" type="time" class="form-control" placeholder="#" required>
+          <label for="floatingInput">Time</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="specialRequest" type="text" class="form-control" placeholder="#" required>
+          <label for="floatingInput">Special Requests</label>
+        </div>
+
+        <button class="btn btn-secondary" id="book-a-reservation">Book A Reservation</button>
       </form>
-      <button id="book-a-reservation">Book A Reservation</button>
     </div>
   </div>
 
   <script type="text/javascript">
     document.getElementById('book-a-reservation').addEventListener('click', function(e){
-			submitFormData()
-		})
+    submitFormData();
+});
 
 		function submitFormData(){
       var form = document.getElementById('form')
@@ -115,28 +153,40 @@ p {
         'time': null,
       }
 
-      userFormData.firstName = form.firstName.value
-      userFormData.lastName = form.lastName.value
-      userFormData.email = form.email.value
-      userFormData.phoneNumber = form.tel.value
-      userFormData.partySize = form.partySize.value
-      userFormData.specialRequest = form.specialRequest.value
-      userFormData.time = form.time.value
+      // userFormData.firstName = form.firstName.value
+      // userFormData.lastName = form.lastName.value
+      // userFormData.email = form.email.value
+      // userFormData.phoneNumber = form.tel.value
+      // userFormData.partySize = form.partySize.value
+      // userFormData.specialRequest = form.specialRequest.value
+      // userFormData.time = form.time.value
+
+      userFormData.firstName = form.elements['firstName'].value;
+      userFormData.lastName = form.elements['lastName'].value;
+      userFormData.email = form.elements['email'].value;
+      userFormData.phoneNumber = form.elements['tel'].value;
+      userFormData.partySize = form.elements['partySize'].value;
+      userFormData.specialRequest = form.elements['specialRequest'].value;
+      userFormData.time = form.elements['time'].value;
 
       var url = "/process_reservation/"
       fetch(url, {
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
-        body:JSON.stringify({'form':userFormData})
-      })
-      .then((response) => response.json())
-      .then((data) => {
+        body: JSON.stringify({'form': userFormData}),
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
         alert('Reservation has been booked!');
-
-        window.location.href = "{% url 'home' %}"
-      })
+        window.location.href = "{% url 'home' %}";
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
     }
   </script>
 {% endblock content %}

@@ -1,83 +1,140 @@
-{% extends 'store/main.html' %}
-{% load static %}
-{% block content %}
+{% extends 'store/main.html' %} {% load static %} {% block content %}
 <style>
   header {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-}
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+  }
 
-h1 {
-  font-size: 5.5rem;
-}
+  h1 {
+    font-size: 5.5rem;
+  }
 
-p {
-  font-size: 1.5em;
-}
+  p {
+    font-size: 1.5em;
+  }
 
-.img-container {
-position: relative;
-width: 100%;
-height: 55vh;
-}
+  .contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
 
-#top-img {
+  .contact-info {
+    flex: 1;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+
+  .map-container {
+    position: relative;
+    flex: 1;
+    max-width: 600px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 5.5rem;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
+
+  .img-container {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+  }
+
+  #top-img {
     width: 100%;
     height: 55vh;
     object-fit: cover;
     filter: brightness(50%);
     border-radius: 1%;
-}
+  }
 
-
-@media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     h1 {
-        font-size: 24px;
+      font-size: 24px;
     }
 
     p {
-        font-size: 14px;
+      font-size: 14px;
     }
-}
+  }
 
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
     h1 {
-        font-size: 30px;
+      font-size: 30px;
     }
 
     p {
-        font-size: 16px;
+      font-size: 16px;
     }
-}
+  }
 </style>
 
 <div class="img-container">
-  <img id="top-img" src="https://images.squarespace-cdn.com/content/v1/5df80109be13de212e4018ec/1582145140227-JKDX4KCIXJZ84NHQ8GGD/sc2020-102.jpg" alt="">
+  <img
+    id="top-img"
+    src="https://images.squarespace-cdn.com/content/v1/5df80109be13de212e4018ec/1582145140227-JKDX4KCIXJZ84NHQ8GGD/sc2020-102.jpg"
+    alt=""
+  />
   <header>
-      <h1 style="color: white;">Contact Us</h1>
-      <p style="color: white;">If you have any questions or concerns, please contact us via the information below!</p>
+    <h1 style="color: white">Contact Us</h1>
+    <p style="color: white">
+      If you have any questions or concerns, please contact us via the
+      information below!
+    </p>
   </header>
 </div>
 
-  <div class="box">
-    <div class="side-area map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d457.17601965758763!2d-93.49184903086531!3d45.019910107856425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b34be04c90d34d%3A0xab9044cdba33a53!2s16605%20County%20Rd%2024%2C%20Plymouth%2C%20MN%2055447!5e0!3m2!1sen!2sus!4v1702766067711!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    
-    <div class="side-area divbox">
-      <div class="sidebox">
-        <h2 id="contacth2">Address: 16605 County Rd 24, Plymouth, MN 55447</h2>
-        <h2 id="contacth2">Phone Number: <a href="tel:612-819-8632p123">(612) 819 8632</a></h2>
-        <h2 id="contacth2">Email: <a href="mailto:info@gamedaygrill.com">info@gamedaygrill.com</a></h2>
-        <h2 id="contacth2">Hours: </h2>
-        <h2 id="contacth2">Monday - Thursday: 11:00am - 9:00pm</h2>
-        <h2 id="contacth2">Friday - Saturday: 11:00am - 10:00pm</h2>
-        <h2 id="contacth2">Sunday: 11:00am - 8:00pm</h2>
-      </div>
-    </div>
+<div class="contact-container">
+  <div class="contact-info">
+    <h4 id="contacth2">Address:</h4>
+    <p>16605 County Rd 24, Plymouth, MN 55447</p>
+    <h4 id="contacth2">Phone Number:</h4>
+    <p><a href="tel:612-819-8632p123">(612) 819 8632</a></p>
+    <h4 id="contacth2">Email:</h4>
+    <p><a href="mailto:info@gamedaygrill.com">info@gamedaygrill.com</a></p>
+    <h4 id="contacth2">Hours:</h4>
+    <p>Monday - Thursday: 11:00am - 9:00pm</p>
+    <p>Friday - Saturday: 11:00am - 10:00pm</p>
+    <p>Sunday: 11:00am - 8:00pm</p>
   </div>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d457.17601965758763!2d-93.49184903086531!3d45.019910107856425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b34be04c90d34d%3A0xab9044cdba33a53!2s16605%20County%20Rd%2024%2C%20Plymouth%2C%20MN%2055447!5e0!3m2!1sen!2sus!4v1702766067711!5m2!1sen!2sus"
+      width="100%"
+      height="100%"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
 {% endblock content %}

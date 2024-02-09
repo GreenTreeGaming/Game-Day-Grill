@@ -20,4 +20,6 @@ urlpatterns = [
     path('reservation/', views.reservation, name='reservation'),
 
     path('events/', views.events, name='events'),
+
+    path('about/', views.about, name='about'),
 ]

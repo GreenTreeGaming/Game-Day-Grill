@@ -18,7 +18,7 @@
      <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
-				<form id="form">
+				<!-- <form id="form">
 					{% csrf_token %}
 					<p>Personal Information:</p>
 					<div id="user-info">
@@ -53,7 +53,43 @@
 
 					<hr>
 					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
-				</form>
+				</form> -->
+				<form id="form" class="needs-validation">
+					{% csrf_token %}
+					<p>Personal Information:</p>
+					<div class="form-floating mb-3">
+					  <input type="text" class="form-control" id="floatingInput" placeholder="#" required>
+					  <label for="floatingInput">Name</label>
+					</div>
+					<div class="form-floating mb-3">
+					  <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="#" required>
+					  <div id="emailHelp" class="form-text" style="color: lightgray;">We'll never share your email with anyone else.</div>
+					  <label for="floatingInput">Email Address</label>
+					</div>
+
+					<hr>
+					<p>Delivery Information:</p>
+
+					<div class="form-floating mb-3">
+					  <input type="text" class="form-control" placeholder="#" required>
+					  <label for="floatingInput">Address</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" placeholder="#" required>
+						<label for="floatingInput">City</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" placeholder="#" required>
+						<label for="floatingInput">State</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" placeholder="#" required>
+						<label for="floatingInput">Zip Code</label>
+					</div>
+			
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+				  </form>
 			</div>
 
 			<br>
@@ -81,7 +117,7 @@
 					</div>
 				{% endfor %}
 				<h5>Items: {{ order.get_cart_items }}</h5>
-				<h5>Total: {{ order.get_cart_total|floatformat:2 }}</h5>
+				<h5>Total: ${{ order.get_cart_total|floatformat:2 }}</h5>
 			</div>
 		</div>
 	</div>
