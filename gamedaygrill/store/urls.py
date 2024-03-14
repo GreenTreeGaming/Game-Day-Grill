@@ -11,6 +11,7 @@ urlpatterns = [
     path('sides/', views.sides, name='sides'),
     path('desserts/', views.desserts, name='desserts'),
     path('extras/', views.extras, name='extras'),
+    path('allitems/', views.allitems, name='allitems'),
 
     path('update_item/', views.updateItem, name='update_item'),
     path('process_order/', views.processOrder, name='process_order'),

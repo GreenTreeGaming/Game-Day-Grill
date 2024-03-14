@@ -1,0 +1,178 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block center %}
+	<style>
+		.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		padding-top: 3rem;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0,0,0,0.4);
+		}
+
+		.modal-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%;
+		}
+
+		.close {
+		color: #aaaaaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+		}
+
+		.modal-body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		}
+
+		#modal-img {
+		width: 200px;
+		height: auto;
+		margin-bottom: 20px;
+		}
+
+		.modal-text {
+		text-align: center;
+		}
+
+		.thumbnail {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.search-bar .search {
+			display: flex;
+			padding: 30px 0px;
+			justify-content: center;
+		}
+
+		.search-bar .search input {
+			width: 60%;
+			padding: 5px 16px;
+			background: transparent;
+			border: 1px solid #000;
+			border-radius: 20px;
+			font-size: 20px;
+			text-transform: capitalize;
+			letter-spacing: 3px;
+			outline: none;
+			color: red;
+		}
+
+		.search-bar .search input::placeholder {
+			color: gray;
+			font-weight: 500;
+		}
+	</style>
+  <div class="search-bar">
+	<div class="search">
+		<input type="text" name="" id="find" placeholder="Search..." onkeyup="search()">
+	</div>
+  </div>
+  <div class="row">
+    {% for product in products %} 
+      <div class="col-lg-4" id="product">
+        <img class="thumbnail" src="{{ product.image.url }}">
+        <div class="box-element product" data-desc="{{ product.description }}" data-veg = "{{ product.vegetarian }}">
+          <h6><strong>{{ product.name }}</strong></h6>
+          <hr>
+
+          <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+          <button class="btn btn-outline-success view-btn">View</button>
+          <h4 style="display: inline-block; float: right"><strong>${{ product.price|floatformat:2 }}</strong></h4>
+
+		  <div id="myModal" class="modal">
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <div class="modal-body">
+				<img id="modal-img" alt="Product Image"> 
+				<div class="modal-text">
+				  <h2 id="modal-name"></h2>
+				  <strong><p id="modal-veg"></p></strong>
+				  <p id="modal-price"></p>
+				  <p id="modal-desc"></p>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <script>
+	var modal = document.getElementById("myModal");
+
+	var btns = document.getElementsByClassName("view-btn");
+
+	var span = document.getElementsByClassName("close")[0];
+
+	var modalImg = document.getElementById("modal-img");
+	var modalName = document.getElementById("modal-name");
+	var modalPrice = document.getElementById("modal-price");
+	var modalDesc = document.getElementById("modal-desc");
+	var modalVeg = document.getElementById("modal-veg");
+
+	for (var i = 0; i < btns.length; i++) {
+	btns[i].onclick = function() {
+		var product = this.parentElement;
+
+		if (product.style.display != "none") {
+			modalImg.src = product.parentElement.querySelector("img").src;
+			modalName.textContent = product.querySelector("h6").textContent;
+			modalPrice.textContent = product.querySelector("h4").textContent;
+			modalDesc.textContent = product.getAttribute("data-desc");
+			modalVeg.textContent = product.getAttribute("data-veg") == "True" ? "Vegetarian" : "Not Vegetarian";
+
+			modal.style.display = "block";
+		}
+	}
+	}
+
+	span.onclick = function() {
+	modal.style.display = "none";
+	}
+
+	window.onclick = function(event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+	}
+
+	function search() {
+		let filter = document.getElementById('find').value.toUpperCase();
+		let item = document.querySelectorAll('#product');
+		let l = document.getElementsByTagName('h6');
+		for(var i = 0;i<=l.length;i++){
+			let a = item[i].getElementsByTagName('h6')[0];
+			let value=a.innerHTML || a.innerText || a.textContent;
+			if(value.toUpperCase().indexOf(filter) > -1) {
+				item[i].style.display="";
+			}
+			else
+			{
+				item[i].style.display="none";
+			}
+		}
+	}
+  </script>
+{% endblock center %}

@@ -88,6 +88,17 @@ def appetizers(request):
     context = {'products': products, 'cartItems': cartItems}
     return render(request, 'store/appetizers.html', context)
 
+def allitems(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    products = Product.objects.all()
+    context = {'products': products, 'cartItems': cartItems}
+    return render(request, 'store/allitems.html', context)
+
 def maincourses(request):
     data = cartData(request)
 
