@@ -1,15 +1,15 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
 
 body {
     background-color: hsl(0, 0%, 98%);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6, p{
 	color:hsl(0, 0%, 30%);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 .spinner-wrapper {

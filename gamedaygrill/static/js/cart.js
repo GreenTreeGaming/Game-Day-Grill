@@ -66,9 +66,9 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     spinnerWrapperEl.style.display = "none";
   }, 200);
-})(
+
   // Bootstrap Form Stuff
-  () => {
+  (() => {
     "use strict";
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -89,5 +89,5 @@ window.addEventListener("load", () => {
         false
       );
     });
-  }
-)();
+  })();
+});

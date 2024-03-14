@@ -18,79 +18,47 @@
      <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
-				<!-- <form id="form">
-					{% csrf_token %}
-					<p>Personal Information:</p>
-					<div id="user-info">
-						<div class="form-field">
-							<input required class="form-control" type="text" name="name" placeholder="Name">
-						</div>
-						<div class="form-field">
-							<input required class="form-control" type="email" name="email" placeholder="Email">
-						</div>
-					</div>
-					
-					<div id="shipping-info" >
-						<hr>
-						<p>Shipping Information:</p>
-						<hr>
-						<div class="form-field">
-							<input class="form-control" type="text" name="address" placeholder="Address" required>
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="city" placeholder="City" required>
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="state" placeholder="State" required>
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="zipcode" placeholder="Zip code" required>
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="country" placeholder="Country" required>
-						</div>
-					</div>
-
-					<hr>
-					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
-				</form> -->
 				<form id="form" class="needs-validation">
 					{% csrf_token %}
 					<p>Personal Information:</p>
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="floatingInput" placeholder="#" required>
-					  <label for="floatingInput">Name</label>
+						<input type="text" class="form-control" id="floatingInput" placeholder="#" required>
+						<label for="floatingInput">Name</label>
 					</div>
 					<div class="form-floating mb-3">
-					  <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="#" required>
-					  <div id="emailHelp" class="form-text" style="color: lightgray;">We'll never share your email with anyone else.</div>
-					  <label for="floatingInput">Email Address</label>
+						<input type="email" class="form-control" id="floatingEmail" aria-describedby="emailHelp" placeholder="#" required>
+						<div id="emailHelp" class="form-text" style="color: lightgray;">We'll never share your email with anyone else.</div>
+						<label for="floatingEmail">Email Address</label>
 					</div>
-
+			
 					<hr>
 					<p>Delivery Information:</p>
-
+			
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" placeholder="#" required>
-					  <label for="floatingInput">Address</label>
+						<input type="text" class="form-control" id="floatingAddress" placeholder="#" required>
+						<label for="floatingAddress">Address</label>
 					</div>
 					<div class="form-floating mb-3">
-						<input type="text" class="form-control" placeholder="#" required>
-						<label for="floatingInput">City</label>
+						<input type="text" class="form-control" id="floatingCity" placeholder="#" required>
+						<label for="floatingCity">City</label>
 					</div>
 					<div class="form-floating mb-3">
-						<input type="text" class="form-control" placeholder="#" required>
-						<label for="floatingInput">State</label>
+						<input type="text" class="form-control" id="floatingState" placeholder="#" required>
+						<label for="floatingState">State</label>
 					</div>
 					<div class="form-floating mb-3">
-						<input type="text" class="form-control" placeholder="#" required>
-						<label for="floatingInput">Zip Code</label>
+						<input type="text" class="form-control" id="floatingZipcode" placeholder="#" required>
+						<label for="floatingZipcode">Zip Code</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="floatingCountry" placeholder="#" required>
+						<label for="floatingCountry">Country</label>
 					</div>
 			
 					<hr>
 					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
-				  </form>
-			</div>
+				</form>
+			</div>			
 
 			<br>
 			<div class="box-element hidden" id="payment-info">
@@ -171,50 +139,48 @@
 		})
 		*/
 
-		function submitFormData(){
+		function submitFormData() {
 			var userFormData = {
-				'name':null,
-				'email':null,
-				'total':total,
+				'name': null,
+				'email': null,
+				'total': total,
 			}
 
 			var shippingInfo = {
-				'address':null,
-				'city':null,
-				'state':null,
-				'zipcode':null,
-				'country':null,
+				'address': null,
+				'city': null,
+				'state': null,
+				'zipcode': null,
+				'country': null,
 			}
 
-			shippingInfo.address = form.address.value
-			shippingInfo.city = form.city.value
-			shippingInfo.state = form.state.value
-			shippingInfo.zipcode = form.zipcode.value
-			shippingInfo.country = form.country.value
+			userFormData.name = document.getElementById('floatingInput').value;
+			userFormData.email = document.getElementById('floatingEmail').value;
 
-			if (user == 'AnonymousUser'){
-				userFormData.name = form.name.value
-				userFormData.email = form.email.value
-			}
+			shippingInfo.address = document.getElementById('floatingAddress').value;
+			shippingInfo.city = document.getElementById('floatingCity').value;
+			shippingInfo.state = document.getElementById('floatingState').value;
+			shippingInfo.zipcode = document.getElementById('floatingZipcode').value;
+			shippingInfo.country = document.getElementById('floatingCountry').value;
 
-			var url = "/process_order/"
+			var url = "/process_order/";
 			fetch(url, {
-				method:'POST',
-				headers:{
-					'Content-Type':'application/json',
-					'X-CSRFToken':csrftoken,
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRFToken': csrftoken,
 				},
-				body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo})
+				body: JSON.stringify({ 'form': userFormData, 'shipping': shippingInfo })
 			})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('Success: ', data)
+				console.log('Success: ', data);
 				alert('Thanks for shopping with us!');
 
-				cart = {}
-				document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+				cart = {};
+				document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
 
-				window.location.href = "{% url 'home' %}"
+				window.location.href = "{% url 'home' %}";
 			})
 		}
 	</script>
